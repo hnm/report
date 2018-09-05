@@ -1,0 +1,366 @@
+{
+    "types": {
+        "report-report": {
+            "nature": "entity",
+            "entity": "report\\bo\\Report",
+            "dataSourceName": null,
+            "label": "Report",
+            "pluralLabel": "Reports",
+            "iconType": null,
+            "fields": {
+                "id": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\numeric\\IntegerEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": false,
+                        "displayInEditView": false,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": false,
+                        "draftable": false,
+                        "minValue": "-2147483648",
+                        "maxValue": "2147483647"
+                    },
+                    "label": "Id",
+                    "objectProperty": "id",
+                    "entityProperty": "id"
+                },
+                "name": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": null,
+                        "multiline": false
+                    },
+                    "label": "Name",
+                    "objectProperty": "name",
+                    "entityProperty": "name"
+                },
+                "nqlQuery": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": "1000",
+                        "multiline": true
+                    },
+                    "label": "NQL",
+                    "objectProperty": "nqlQuery",
+                    "entityProperty": "nqlQuery"
+                },
+                "variables": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\relation\\EmbeddedOneToManyEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "draftable": false
+                    },
+                    "label": "Variablen",
+                    "objectProperty": "variables",
+                    "entityProperty": "variables"
+                }
+            },
+            "commands": {
+                "overviewEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\OverviewEiCommand",
+                    "props": []
+                },
+                "addEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\AddEiCommand",
+                    "props": []
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "editEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\EditEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\DeleteEiCommand",
+                    "props": []
+                },
+                "reportEiCommand": {
+                    "class": "report\\ei\\command\\RunReportScriptCommand",
+                    "props": []
+                }
+            },
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-string-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\StringQueryVariable",
+            "dataSourceName": null,
+            "label": "String Variable",
+            "pluralLabel": "String Variablen",
+            "iconType": null,
+            "fields": [],
+            "commands": {
+                "overviewEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\OverviewEiCommand",
+                    "props": []
+                },
+                "detailEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\DetailEiCommand",
+                    "props": []
+                },
+                "editEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\EditEiCommand",
+                    "props": []
+                },
+                "addEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\AddEiCommand",
+                    "props": []
+                },
+                "deleteEiCommand": {
+                    "class": "rocket\\impl\\ei\\component\\command\\common\\DeleteEiCommand",
+                    "props": []
+                }
+            },
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\QueryVariable",
+            "dataSourceName": null,
+            "label": "Query Variable",
+            "pluralLabel": "Query Variablen",
+            "iconType": null,
+            "fields": {
+                "label": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": null,
+                        "multiline": false
+                    },
+                    "label": "Label",
+                    "objectProperty": "label",
+                    "entityProperty": "label"
+                },
+                "name": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": null,
+                        "multiline": false
+                    },
+                    "label": "Name",
+                    "objectProperty": "name",
+                    "entityProperty": "name"
+                }
+            },
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-numeric-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\NumericQueryVariable",
+            "dataSourceName": null,
+            "label": "Numerische Variable",
+            "pluralLabel": "Numerische Variablen",
+            "iconType": null,
+            "fields": [],
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-date-time-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\DateTimeQueryVariable",
+            "dataSourceName": null,
+            "label": "Datum\/Zeit Variabel",
+            "pluralLabel": "Datum\/Zeit Variablen",
+            "iconType": null,
+            "fields": [],
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-enum-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\EnumQueryVariable",
+            "dataSourceName": null,
+            "label": "Enum Variable",
+            "pluralLabel": "Enum Variablen",
+            "iconType": null,
+            "fields": {
+                "enumValues": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\relation\\EmbeddedOneToManyEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "draftable": false
+                    },
+                    "label": "Enum Werte",
+                    "objectProperty": "enumValues",
+                    "entityProperty": "enumValues"
+                }
+            },
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-enum-value": {
+            "nature": "entity",
+            "entity": "report\\bo\\EnumValue",
+            "dataSourceName": null,
+            "label": "Aufz\u00e4hlungswert",
+            "pluralLabel": "Aufz\u00e4hlungswerte",
+            "iconType": null,
+            "fields": {
+                "key": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": null,
+                        "multiline": false
+                    },
+                    "label": "Key",
+                    "objectProperty": "key",
+                    "entityProperty": "key"
+                },
+                "label": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
+                    "props": {
+                        "displayInOverview": true,
+                        "displayInDetailView": true,
+                        "displayInEditView": true,
+                        "displayInAddView": true,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "maxlength": null,
+                        "multiline": false
+                    },
+                    "label": "Label",
+                    "objectProperty": "label",
+                    "entityProperty": "label"
+                },
+                "enumQueryVariable": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\relation\\ManyToOneSelectEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": false,
+                        "displayInEditView": false,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": true,
+                        "draftable": false,
+                        "targetRemovalStrategy": "prevent"
+                    },
+                    "label": "Enum Variable",
+                    "objectProperty": "enumQueryVariable",
+                    "entityProperty": "enumQueryVariable"
+                },
+                "id": {
+                    "class": "rocket\\impl\\ei\\component\\prop\\numeric\\IntegerEiProp",
+                    "props": {
+                        "displayInOverview": false,
+                        "displayInDetailView": false,
+                        "displayInEditView": false,
+                        "displayInAddView": false,
+                        "constant": false,
+                        "readOnly": false,
+                        "mandatory": false,
+                        "draftable": false,
+                        "minValue": "-2147483648",
+                        "maxValue": "2147483647"
+                    },
+                    "label": "Id",
+                    "objectProperty": "id",
+                    "entityProperty": "id"
+                }
+            },
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-n2n-locale-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\N2nLocaleQueryVariable",
+            "dataSourceName": null,
+            "label": "Locale Variabel",
+            "pluralLabel": "Locale Variabeln",
+            "iconType": null,
+            "fields": [],
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        },
+        "report-boolean-query-variable": {
+            "nature": "entity",
+            "entity": "report\\bo\\BooleanQueryVariable",
+            "dataSourceName": null,
+            "label": "Wahr\/Falsch Variable",
+            "pluralLabel": "Wahr\/Falsch Variabeln",
+            "iconType": null,
+            "fields": [],
+            "commands": [],
+            "partialControlOrder": [],
+            "overallControlOrder": [],
+            "entryControlOrder": []
+        }
+    },
+    "eiTypeExtensions": [],
+    "launchPads": {
+        "report-report": []
+    }
+}
