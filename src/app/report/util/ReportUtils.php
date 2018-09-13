@@ -7,7 +7,7 @@ use n2n\util\StringUtils;
 use rocket\core\model\Rocket;
 use n2n\l10n\N2nLocale;
 use n2n\persistence\orm\OrmConfigurationException;
-use rocket\ei\util\model\Eiu;
+use rocket\ei\util\Eiu;
 
 class ReportUtils {
 	

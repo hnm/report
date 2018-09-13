@@ -8,8 +8,8 @@ use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\util\uri\Path;
 use n2n\l10n\N2nLocale;
 use n2n\web\http\controller\Controller;
-use rocket\ei\manage\control\EntryControlComponent;
-use rocket\ei\util\model\Eiu;
+use rocket\ei\component\command\control\EntryControlComponent;
+use rocket\ei\util\Eiu;
 use n2n\core\container\N2nContext;
 use rocket\ei\manage\control\ControlButton;
 use rocket\ei\manage\control\IconType;
@@ -44,7 +44,7 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter implements Entr
 
 	/**
 	 * {@inheritDoc}
-	 * @see \rocket\ei\manage\control\EntryControlComponent::getEntryControlOptions()
+	 * @see \rocket\ei\component\command\control\EntryControlComponent::getEntryControlOptions()
 	 */
 	public function getEntryControlOptions(N2nContext $n2nContext, N2nLocale $n2nLocale): array {
 		$dtc = new DynamicTextCollection('report', $n2nLocale);
@@ -53,7 +53,7 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter implements Entr
 	
 	/**
 	 * {@inheritDoc}
-	 * @see \rocket\ei\manage\control\EntryControlComponent::createEntryControls()
+	 * @see \rocket\ei\component\command\control\EntryControlComponent::createEntryControls()
 	 */
 	public function createEntryControls(Eiu $eiu, HtmlView $view): array {
 		$eiuFrame = $eiu->frame();

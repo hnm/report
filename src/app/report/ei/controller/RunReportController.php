@@ -14,8 +14,8 @@ use report\model\ReportDao;
 use report\util\ReportUtils;
 use rocket\core\model\Breadcrumb;
 use rocket\core\model\RocketState;
-use rocket\ei\util\model\EiuCtrl;
-use rocket\ei\util\model\Eiu;
+use rocket\ei\util\EiuCtrl;
+use rocket\ei\util\Eiu;
 
 class RunReportController extends ControllerAdapter {
 	
