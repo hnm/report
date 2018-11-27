@@ -62,7 +62,7 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter implements Entr
 						array('entry' => $eiuFrame->getGenericLabel()), null, null, 'report'),
 				true, ControlButton::TYPE_SECONDARY, IconType::ICON_PLAY);
 	
-		$urlExt = (new Path(array($eiu->entry()->getLiveId())))->toUrl();
+		$urlExt = (new Path(array($eiu->entry()->getId())))->toUrl();
 		return array(self::CONTROL_DETAIL_KEY
 				=> HrefControl::create($eiuFrame->getEiFrame(), $this, $urlExt, $controlButton));
 	}
