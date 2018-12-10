@@ -58,7 +58,8 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter implements Entr
 	public function createEntryControls(Eiu $eiu, HtmlView $view): array {
 		$eiuFrame = $eiu->frame();
 		$controlButton = new ControlButton(
-				$view->getL10nText('script_cmd_run_report_label', null, null, null, 'report'), $view->getL10nText('script_cmd_run_report_tooltip',
+				$view->getL10nText('script_cmd_run_report_label', null, null, null, 'report'), 
+				$view->getL10nText('script_cmd_run_report_tooltip',
 						array('entry' => $eiuFrame->getGenericLabel()), null, null, 'report'),
 				true, ControlButton::TYPE_SECONDARY, IconType::ICON_PLAY);
 	
