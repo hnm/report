@@ -57,13 +57,13 @@ class ReportUtils {
 			$rocket = $eiu->frame()->getN2nContext()->lookup(Rocket::class);
 			CastUtils::assertTrue($rocket instanceof Rocket);
 				
-			if (!$rocket->getSpecManager()->containsEiSpecClass($entityModel->getClass())) {
+			if (!$rocket->getSpec()->containsEiTypeClass($entityModel->getClass())) {
 				return '[obj]';
 			}
 				
-			$eiSpec = $rocket->getSpecManager()->getEiSpecByClass($entityModel->getClass());
-			return $eiSpec->getEiMaskCollection()->getOrCreateDefault()->createIdentityString(
-					$eiu->entry(), $locale);
+			$eiSpec = $rocket->getSpec()->getEiTypeByClass($entityModel->getClass());
+			$valueEiu = new Eiu($eiSpec, $eiu->getN2nContext(), $value);
+			return $valueEiu->entry()->createIdentityString();
 		}
 		
 		return null;
