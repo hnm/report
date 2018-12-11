@@ -129,7 +129,7 @@ class RunReportController extends ControllerAdapter {
 		$httpContext = $this->getHttpContext();
 	
 		$EiFrame = $this->eiu->frame()->getEiFrame();
-		$eiObject = $this->eiuCtrl->lookupEntry($reportId)->getEiObject();
+		$eiObject = $this->eiuCtrl->lookupEntry($reportId)->object()->getEiObject();
 	
 		if (!$EiFrame->isOverviewDisabled()) {
 			$this->rocketState->addBreadcrumb($EiFrame->createOverviewBreadcrumb($httpContext));
