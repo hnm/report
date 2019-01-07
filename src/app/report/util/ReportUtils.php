@@ -2,7 +2,7 @@
 namespace report\util;
 
 use n2n\l10n\L10nUtils;
-use n2n\reflection\CastUtils;
+use n2n\util\type\CastUtils;
 use n2n\util\StringUtils;
 use rocket\core\model\Rocket;
 use n2n\l10n\N2nLocale;

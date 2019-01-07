@@ -4,7 +4,7 @@ namespace report\ei\controller;
 use n2n\impl\web\dispatch\mag\model\MagForm;
 use n2n\io\IoUtils;
 use n2n\l10n\DynamicTextCollection;
-use n2n\reflection\CastUtils;
+use n2n\util\type\CastUtils;
 use n2n\web\dispatch\mag\MagCollection;
 use n2n\web\http\controller\ControllerAdapter;
 use n2n\web\http\controller\ParamPost;

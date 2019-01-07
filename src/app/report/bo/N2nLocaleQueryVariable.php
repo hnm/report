@@ -4,7 +4,7 @@ namespace report\bo;
 use n2n\persistence\orm\annotation\AnnoDiscriminatorValue;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\web\dispatch\mag\Mag;
-use n2n\reflection\ArgUtils;
+use n2n\util\type\ArgUtils;
 use n2n\impl\web\dispatch\mag\model\N2nLocaleMag;
 
 class N2nLocaleQueryVariable extends QueryVariable {
