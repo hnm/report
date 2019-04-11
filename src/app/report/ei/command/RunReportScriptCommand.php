@@ -11,8 +11,8 @@ use n2n\web\http\controller\Controller;
 use rocket\ei\component\command\control\EntryControlComponent;
 use rocket\ei\util\Eiu;
 use n2n\core\container\N2nContext;
-use rocket\ei\manage\control\ControlButton;
-use rocket\ei\manage\control\IconType;
+use rocket\si\control\SiButton;
+use rocket\si\control\SiIconType;
 use rocket\ei\manage\control\HrefControl;
 
 class RunReportScriptCommand extends IndependentEiCommandAdapter implements EntryControlComponent {
@@ -57,14 +57,14 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter implements Entr
 	 */
 	public function createEntryControls(Eiu $eiu, HtmlView $view): array {
 		$eiuFrame = $eiu->frame();
-		$controlButton = new ControlButton(
+		$siButton = new SiButton(
 				$view->getL10nText('script_cmd_run_report_label', null, null, null, 'report'), 
 				$view->getL10nText('script_cmd_run_report_tooltip',
 						array('entry' => $eiuFrame->getGenericLabel()), null, null, 'report'),
-				true, ControlButton::TYPE_SECONDARY, IconType::ICON_PLAY);
+				true, SiButton::TYPE_SECONDARY, SiIconType::ICON_PLAY);
 	
 		$urlExt = (new Path(array($eiu->entry()->getId())))->toUrl();
 		return array(self::CONTROL_DETAIL_KEY
-				=> HrefControl::create($eiuFrame->getEiFrame(), $this, $urlExt, $controlButton));
+				=> HrefControl::create($eiuFrame->getEiFrame(), $this, $urlExt, $siButton));
 	}
 }
