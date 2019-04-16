@@ -41,13 +41,13 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter {
 	}
 
 
-	public function getEntryControlOptions(N2nContext $n2nContext, N2nLocale $n2nLocale): array {
+	public function getEntryGuiControlOptions(N2nContext $n2nContext, N2nLocale $n2nLocale): array {
 		$dtc = new DynamicTextCollection('report', $n2nLocale);
 		return array(self::DEFAULT_ID => $dtc->translate('script_cmd_export_report_label'));
 	}
 	
 
-	public function createEntryControls(Eiu $eiu): array {
+	public function createEntryGuiControls(Eiu $eiu): array {
 		$eiuFrame = $eiu->frame();
 		$siButton = new SiButton(
 				$view->getL10nText('script_cmd_run_report_label', null, null, null, 'report'), 
