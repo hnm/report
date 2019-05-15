@@ -23,7 +23,7 @@
 	$view->useTemplate('\rocket\core\view\template.html',
 			array('title' => $view->getL10nText('script_cmd_run_report_title'), 'selectViewToolbar' => true));
 ?> 
-<?php $html->out($html->getMessageList()) ?>
+<?php //$html->out($html->getMessageList()) ?>
 <?php $formHtml->open($magForm) ?>
 	<div class="rocket-entry">
 		<div class="rocket-group rocket-simple-group">
@@ -45,30 +45,36 @@
 			</div>
 		</div>
 	</div>
-	<?php if ($reportGenerated && (count($reportResults) > 0)): ?>
+	<?php if ($reportGenerated): ?>
 		<h3><?php $html->text('script_cmd_run_report_results_title') ?></h3>
-		<table class="table table-hover rocket-table">
-			<thead>
-				<tr>
-					<?php foreach ($reportResults['columnNames'] as $columnName): ?>
-						<th><?php $html->out($columnName)?></th>
-					<?php endforeach ?>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($reportResults['rows'] as $row): ?>
+		<?php if (count($reportResults) === 0): ?>
+			<div class="alert alert-info">
+				<?php $html->text('no_results_given_txt') ?>
+			</div>
+		<?php else: ?>
+			<table class="table table-hover rocket-table">
+				<thead>
 					<tr>
-						<?php foreach ($row as $rowValue): ?>
-							<?php if (ReportUtils::containsHtml($rowValue)): ?>
-								<td><?php $view->out($rowValue) ?></td>
-							<?php else: ?>
-								<td><?php $html->out($rowValue) ?></td>
-							<?php endif ?>
+						<?php foreach ($reportResults['columnNames'] as $columnName): ?>
+							<th><?php $html->out($columnName)?></th>
 						<?php endforeach ?>
 					</tr>
-				<?php endforeach ?>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<?php foreach ($reportResults['rows'] as $row): ?>
+						<tr>
+							<?php foreach ($row as $rowValue): ?>
+								<?php if (ReportUtils::containsHtml($rowValue)): ?>
+									<td><?php $view->out($rowValue) ?></td>
+								<?php else: ?>
+									<td><?php $html->out($rowValue) ?></td>
+								<?php endif ?>
+							<?php endforeach ?>
+						</tr>
+					<?php endforeach ?>
+				</tbody>
+			</table>
+		<?php endif ?>
 	<?php endif ?>
 	<div class="rocket-zone-commands">
 		<div class="rocket-main-commands">

@@ -16,7 +16,7 @@ class StringQueryVariable extends QueryVariable {
 	 * @see \report\bo\QueryVariable::createMag()
 	 */
 	public function createMag(): Mag {
-		return new StringMag($this->getName(), $this->getLabel());
+		return new StringMag($this->getLabel());
 	}
 	/**
 	 * {@inheritDoc}

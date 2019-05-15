@@ -17,7 +17,7 @@ class N2nLocaleQueryVariable extends QueryVariable {
 	 * @see \report\bo\QueryVariable::createMag()
 	 */
 	public function createMag(): Mag {
-		return new N2nLocaleMag($this->getName(), $this->getLabel());
+		return new N2nLocaleMag($this->getLabel());
 	}
 	
 	/**

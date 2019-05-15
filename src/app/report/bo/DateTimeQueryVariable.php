@@ -14,9 +14,10 @@ class DateTimeQueryVariable extends QueryVariable {
 	/**
 	 * {@inheritDoc}
 	 * @see \report\bo\QueryVariable::createMag()
+	 * @return Mag
 	 */
 	public function createMag(): Mag {
-		return new DateTimeMag($this->getName(), $this->getLabel());
+		return new DateTimeMag($this->getLabel());
 	}
 	
 	/**

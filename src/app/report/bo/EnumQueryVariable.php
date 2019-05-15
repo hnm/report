@@ -26,10 +26,10 @@ class EnumQueryVariable extends QueryVariable {
 	 */
 	public function createMag(): Mag {
 		$enumArr = array();
-		foreach ($this->enumValues as $enumValue) {
+		foreach ($this->getEnumValues() as $enumValue) {
 			$enumArr[$enumValue->getKey()] = $enumValue->getLabel();
 		}
-		return new EnumMag($this->getName(), $this->getLabel(), $enumArr, null, false);
+		return new EnumMag($this->getLabel(), $enumArr, null, false);
 	}
 
 	/**
@@ -41,7 +41,7 @@ class EnumQueryVariable extends QueryVariable {
 	}
 	
 	/**
-	 * @return \ArrayObject
+	 * @return EnumValue []
 	 */
 	public function getEnumValues() {
 		return $this->enumValues;

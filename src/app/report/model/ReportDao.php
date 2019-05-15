@@ -8,6 +8,7 @@ use n2n\web\dispatch\mag\MagCollection;
 use n2n\l10n\MessageContainer;
 use n2n\persistence\orm\query\QueryConflictException;
 use rocket\ei\util\Eiu;
+use n2n\persistence\Pdo;
 
 class ReportDao implements RequestScoped {
 	
@@ -49,9 +50,17 @@ class ReportDao implements RequestScoped {
 		}
 
 		try {
-			$criteria = $eiu->frame()->em()->createNqlCriteria($report->getNqlQuery(), $bindValues);
-			return $criteria->toQuery()->fetchArray();
-		} catch (QueryConflictException $e) {
+			if ($report->getType() === Report::TYPE_NQL) {
+				$criteria = $eiu->frame()->em()->createNqlCriteria($report->getQuery(), $bindValues);
+				return $criteria->toQuery()->fetchArray();
+			}
+			
+			$pdo = $this->em->getPdo();
+			$stmt = $pdo->prepare($report->getQuery());
+			$stmt->execute($bindValues);
+			
+			return $stmt->fetchAll(Pdo::FETCH_ASSOC);
+		} catch (\Throwable $e) {
 			$this->mc->addError($e->getMessage());
 		}
 	}

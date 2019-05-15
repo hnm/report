@@ -14,9 +14,10 @@ class BooleanQueryVariable extends QueryVariable {
 	/**
 	 * {@inheritDoc}
 	 * @see \report\bo\QueryVariable::createMag()
+	 * @return Mag
 	 */
 	public function createMag(): Mag {
-		return new BoolMag($this->getName(), $this->getLabel());
+		return new BoolMag($this->getLabel());
 	}
 	/**
 	 * {@inheritDoc}

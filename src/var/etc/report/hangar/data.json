@@ -1,0 +1,48 @@
+{
+    "report\\bo\\Report": {
+        "id": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\IntegerPropDef",
+            "props": {
+                "size": "32",
+                "signed": true
+            }
+        },
+        "name": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "type": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "query": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\scalar\\StringPropDef",
+            "props": {
+                "length": "255",
+                "charset": null
+            }
+        },
+        "variables": {
+            "prop-def": "n2n\\impl\\persistence\\orm\\property\\hangar\\relation\\OneToManyPropDef",
+            "props": {
+                "targetEntityClass": "report\\bo\\QueryVariable",
+                "mappedBy": "report",
+                "cascadeType": {
+                    "1": "1",
+                    "2": "2",
+                    "4": "4",
+                    "8": "8",
+                    "16": "16"
+                },
+                "fetchType": "lazy",
+                "orphanRemoval": true
+            }
+        }
+    }
+}

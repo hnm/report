@@ -16,7 +16,7 @@ class NumericQueryVariable extends QueryVariable {
 	 * @see \report\bo\QueryVariable::createMag()
 	 */
 	public function createMag(): Mag {
-		return new NumericMag($this->getName(), $this->getLabel());
+		return new NumericMag($this->getLabel());
 	}
 	
 	/**
