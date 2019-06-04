@@ -82,7 +82,7 @@
                         "readOnly": false,
                         "mandatory": true,
                         "draftable": false,
-                        "maxlength": "1000",
+                        "maxlength": null,
                         "multiline": true
                     },
                     "label": "Query",
