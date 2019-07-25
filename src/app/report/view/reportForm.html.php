@@ -27,17 +27,17 @@
 <?php $formHtml->open($magForm) ?>
 	<div class="rocket-entry">
 		<div class="rocket-group rocket-simple-group">
-			<div class="rocket-control">
+			<div class="rocket-structure-content">
 				<div class="rocket-read-only rocket-field rocket-item">
 					<label><?php $html->text('script_cmd_run_name_label') ?></label>
-					<div class="rocket-control">
+					<div class="rocket-structure-content">
 						<?php $html->escBr($report->getName()) ?>
 					</div>
 				</div>
 				<?php if ($report->hasQueryVariables()): ?>
 					<div class="rocket-read-only rocket-field rocket-item">
 						<label><?php $html->text('script_cmd_variable_name_label') ?></label>
-						<div class="rocket-control">
+						<div class="rocket-structure-content">
 					   	 	<?php $view->import('\n2n\impl\web\dispatch\mag\view\magForm.html') ?>
 						</div>
 					</div>
