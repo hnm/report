@@ -7,7 +7,7 @@
             "label": "Report",
             "pluralLabel": "Reports",
             "iconType": null,
-            "fields": {
+            "props": {
                 "id": {
                     "class": "rocket\\impl\\ei\\component\\prop\\numeric\\IntegerEiProp",
                     "props": {
@@ -115,7 +115,7 @@
             "label": "String Variable",
             "pluralLabel": "String Variablen",
             "iconType": null,
-            "fields": [],
+            "props": [],
             "commands": {
                 "overviewEiCommand": {
                     "class": "rocket\\impl\\ei\\component\\command\\common\\OverviewEiCommand",
@@ -149,7 +149,7 @@
             "label": "Query Variable",
             "pluralLabel": "Query Variablen",
             "iconType": null,
-            "fields": {
+            "props": {
                 "label": {
                     "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
                     "props": {
@@ -199,7 +199,7 @@
             "label": "Numerische Variable",
             "pluralLabel": "Numerische Variablen",
             "iconType": null,
-            "fields": [],
+            "props": [],
             "commands": [],
             "partialControlOrder": [],
             "overallControlOrder": [],
@@ -212,7 +212,7 @@
             "label": "Datum\/Zeit Variabel",
             "pluralLabel": "Datum\/Zeit Variablen",
             "iconType": null,
-            "fields": [],
+            "props": [],
             "commands": [],
             "partialControlOrder": [],
             "overallControlOrder": [],
@@ -225,7 +225,7 @@
             "label": "Enum Variable",
             "pluralLabel": "Enum Variablen",
             "iconType": null,
-            "fields": {
+            "props": {
                 "enumValues": {
                     "class": "rocket\\impl\\ei\\component\\prop\\relation\\EmbeddedOneToManyEiProp",
                     "props": {
@@ -254,7 +254,7 @@
             "label": "Aufz\u00e4hlungswert",
             "pluralLabel": "Aufz\u00e4hlungswerte",
             "iconType": null,
-            "fields": {
+            "props": {
                 "key": {
                     "class": "rocket\\impl\\ei\\component\\prop\\string\\StringEiProp",
                     "props": {
@@ -339,7 +339,7 @@
             "label": "Locale Variabel",
             "pluralLabel": "Locale Variabeln",
             "iconType": null,
-            "fields": [],
+            "props": [],
             "commands": [],
             "partialControlOrder": [],
             "overallControlOrder": [],
@@ -352,7 +352,7 @@
             "label": "Wahr\/Falsch Variable",
             "pluralLabel": "Wahr\/Falsch Variabeln",
             "iconType": null,
-            "fields": [],
+            "props": [],
             "commands": [],
             "partialControlOrder": [],
             "overallControlOrder": [],
