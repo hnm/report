@@ -3,7 +3,7 @@
 	use n2n\impl\web\ui\view\html\HtmlView;
 	use report\bo\Report;
 	use report\util\ReportUtils;
-	use rocket\ei\manage\control\IconType;
+	use rocket\si\control\SiIconType;
 	
 	/**
 	 * @var \n2n\web\ui\view\View $view
@@ -27,17 +27,17 @@
 <?php $formHtml->open($magForm) ?>
 	<div class="rocket-entry">
 		<div class="rocket-group rocket-simple-group">
-			<div class="rocket-control">
+			<div class="rocket-structure-content">
 				<div class="rocket-read-only rocket-field rocket-item">
 					<label><?php $html->text('script_cmd_run_name_label') ?></label>
-					<div class="rocket-control">
+					<div class="rocket-structure-content">
 						<?php $html->escBr($report->getName()) ?>
 					</div>
 				</div>
 				<?php if ($report->hasQueryVariables()): ?>
 					<div class="rocket-read-only rocket-field rocket-item">
 						<label><?php $html->text('script_cmd_variable_name_label') ?></label>
-						<div class="rocket-control">
+						<div class="rocket-structure-content">
 					   	 	<?php $view->import('\n2n\impl\web\dispatch\mag\view\magForm.html') ?>
 						</div>
 					</div>
@@ -80,12 +80,12 @@
 		<div class="rocket-main-commands">
 			<?php if ($report->hasQueryVariables()): ?>
 				<button type="submit" name="command" value="run" class="btn btn-secondary">
-					<i class="<?php $html->out(IconType::ICON_PLAY_CIRCLE) ?>"></i>
+					<i class="<?php $html->out(SiIconType::ICON_PLAY_CIRCLE) ?>"></i>
 					<span> <?php $html->out($view->getL10nText('script_cmd_run_report_label')) ?></span>
 				</button>
 			<?php endif ?>
 			<button type="submit" name="command" value="csv" class="btn btn-secondary">
-				<i class="<?php $html->out(IconType::ICON_TABLE) ?>"></i>
+				<i class="<?php $html->out(SiIconType::ICON_TABLE) ?>"></i>
 				<span> <?php $html->out($view->getL10nText('script_cmd_export_report_label')) ?></span>
 			</button>
 		</div>
