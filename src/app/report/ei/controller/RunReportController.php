@@ -41,11 +41,20 @@ class RunReportController extends ControllerAdapter {
 	 * @param RocketState $rocketState
 	 * @param Request $request
 	 */
-	public function prepare(EiuCtrl $eiuCtrl, RocketState $rocketState, Request $request) {
-		$this->eiuCtrl = $eiuCtrl;
-		$this->eiu = $eiuCtrl->eiu();
-		$this->rocketState = $rocketState;
-		$this->dtc = new DynamicTextCollection('report', $request->getN2nLocale());
+	public function prepare(Request $request) {
+		$this->eiuCtrl = EiuCtrl::from($this->cu());
+		$this->eiu = $this->eiuCtrl->eiu();
+		$this->dtc = $this->eiu->dtc('report');
+	}
+	
+	function index($reportId) {
+		$report = $this->eiuCtrl->lookupObject($reportId);
+		
+		$this->eiuCtrl->pushOverviewBreadcrumb()
+				->pushDetailBreadcrumb($report)
+				->pushCurrentAsSirefBreadcrumb($this->dtc->t('script_cmd_run_report_breadcrumb'));
+		
+		$this->eiuCtrl->forwardUrlIframeZone($this->getUrlToController(['src', $reportId]));
 	}
 	
 	/**
@@ -53,7 +62,7 @@ class RunReportController extends ControllerAdapter {
 	 * @param ReportDao $reportDao
 	 * @param string $reportId
 	 */
-	public function index(ParamPost $command = null, ReportDao $reportDao, $reportId) {
+	public function doSrc(ReportDao $reportDao, $reportId, ParamPost $command = null) {
 		$reportResults = array();
 		$reportGenerated = false;
 		
@@ -89,7 +98,6 @@ class RunReportController extends ControllerAdapter {
 			}
 		}
 		
-		$this->applyBreadcrumbs($reportId);
 		$this->forward('..\..\view\reportForm.html', 
 					array('magForm' => $magForm, 'report' => $report, 'reportGenerated' => $reportGenerated,
 							'reportResults' => $reportResults));
@@ -121,22 +129,4 @@ class RunReportController extends ControllerAdapter {
 		return $preparedReportResults;
 	}
 	
-	/**
-	 * @param string $reportId
-	 */
-	private function applyBreadcrumbs($reportId) {
-		$controllerContext = $this->getControllerContext();
-		$httpContext = $this->getHttpContext();
-	
-		$eiFrame = $this->eiu->frame()->getEiFrame();
-		$eiObject = $this->eiuCtrl->lookupEntry($reportId)->object()->getEiObject();
-	
-		if (!$eiFrame->isOverviewDisabled()) {
-			$this->rocketState->addBreadcrumb($eiFrame->createOverviewBreadcrumb($httpContext));
-		}
-	
-		$this->rocketState->addBreadcrumb($eiFrame->createDetailBreadcrumb($httpContext, $eiObject));
-		$this->rocketState->addBreadcrumb(new Breadcrumb($httpContext->getControllerContextPath($controllerContext), 
-				$this->dtc->translate('script_cmd_run_report_breadcrumb')));
-	}
 }

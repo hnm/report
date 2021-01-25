@@ -19,9 +19,6 @@
 	
 	$reportGenerated = $view->getParam('reportGenerated');
 	$reportResults = $view->getParam('reportResults');
-	
-	$view->useTemplate('\rocket\core\view\template.html',
-			array('title' => $view->getL10nText('script_cmd_run_report_title'), 'selectViewToolbar' => true));
 ?> 
 <?php //$html->out($html->getMessageList()) ?>
 <?php $formHtml->open($magForm) ?>
