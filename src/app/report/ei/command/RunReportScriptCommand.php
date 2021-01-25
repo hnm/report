@@ -58,9 +58,9 @@ class RunReportScriptCommand extends IndependentEiCommandAdapter {
 				->setTooltip($dtc->t('script_cmd_run_report_tooltip', array('entry' => $eiu->frame()->getGenericLabel())))
 				->setImportant(true);
 		
-		$eiuControlFactory = $eiu->guiFrame()->controlFactory($this);
+		$eiuControlFactory = $eiu->factory()->controls();
 		
-		return [$eiuControlFactory->createCmdRef(self::CONTROL_DETAIL_KEY, $siButton,
+		return [$eiuControlFactory->newCmdRef(self::CONTROL_DETAIL_KEY, $siButton,
 				new Path([$eiu->entry()->getPid()]))];
 	}
 	
