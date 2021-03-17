@@ -3,7 +3,7 @@ namespace report\ei\command;
 
 use n2n\l10n\DynamicTextCollection;
 use report\ei\controller\RunReportController;
-use rocket\impl\ei\component\command\adapter\IndependentEiCommandAdapter;
+use rocket\impl\ei\component\command\IndependentEiCommandAdapter;
 use n2n\impl\web\ui\view\html\HtmlView;
 use n2n\util\uri\Path;
 use n2n\l10n\N2nLocale;
