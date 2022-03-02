@@ -29,10 +29,7 @@ abstract class QueryVariable extends ObjectAdapter {
 	 * @var string $name
 	 */
 	private $name;
-	/**
-	 * @var string $type
-	 */
-	private $type;
+
 	/**
 	 * @var Report $report
 	 */
