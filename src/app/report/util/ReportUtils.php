@@ -63,7 +63,7 @@ class ReportUtils {
 				
 			$eiSpec = $rocket->getSpec()->getEiTypeByClass($entityModel->getClass());
 			$valueEiu = new Eiu($eiSpec, $eiu->getN2nContext(), $value);
-			return $valueEiu->entry()->createIdentityString();
+			return $valueEiu->mask()->engine()->createIdentityString($value, $locale);
 		}
 		
 		return null;
