@@ -10,7 +10,8 @@
 	],
 	"homepage" : "https://n2n.rocks/",
 	"license" : "MIT",
-	"authors" : [{
+	"authors" : [
+        {
 			"name" : "Thomas Günther",
 			"email" : "guenther@hnm.ch"
 		}
@@ -22,11 +23,10 @@
 	},
 	"require" : {
 		"php" : ">=7.0",
-		"n2n/n2n-composer-module-installer" : "^7.1",
-		"n2n/rocket": "^3"
+		"n2n/n2n-composer-module-installer" : "^7.1.5",
+		"n2n/rocket": "^4"
 	},
 	"require-dev" : {
-		"n2n/hangar": "^8.0",
 		"phpunit/phpunit" : "^9.5"
 	},
 	"autoload" : {
