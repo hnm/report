@@ -59,7 +59,7 @@ class ReportDao implements RequestScoped {
 			$stmt = $pdo->prepare($report->getQuery());
 			$stmt->execute($bindValues);
 			
-			return $stmt->fetchAll(Pdo::FETCH_ASSOC);
+			return $stmt->fetchAll(\Pdo::FETCH_ASSOC);
 		} catch (\Throwable $e) {
 			$this->mc->addError($e->getMessage());
 		}
