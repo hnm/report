@@ -5,7 +5,9 @@ use n2n\persistence\orm\annotation\AnnoDiscriminatorValue;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\web\dispatch\mag\Mag;
 use n2n\impl\web\dispatch\mag\model\BoolMag;
+use rocket\attribute\EiType;
 
+#[EiType(label: 'Wahr/Falsch Variable', pluralLabel: 'Wahr/Falsch Variabeln')]
 class BooleanQueryVariable extends QueryVariable {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoDiscriminatorValue('boolean'));

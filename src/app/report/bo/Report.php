@@ -5,7 +5,16 @@ use n2n\persistence\orm\annotation\AnnoOneToMany;
 use n2n\persistence\orm\annotation\AnnoTable;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
+use rocket\attribute\EiType;
+use rocket\attribute\MenuItem;
+use rocket\attribute\EiPreset;
+use rocket\spec\setup\EiPresetMode;
+use rocket\attribute\impl\EiPropOneToManyEmbedded;
+use rocket\attribute\impl\EiPropEnum;
 
+#[EiType(label: 'Report', pluralLabel: 'Reports')]
+#[MenuItem(groupName: 'Tools')]
+#[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
 class Report extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('report'));
@@ -15,11 +24,13 @@ class Report extends ObjectAdapter {
 	const TYPE_NQL = 'nql';
 	const TYPE_SQL = 'sql';
 
-	private $id;
-	private $name;
-	private $type = self::TYPE_NQL;
-	private $query;
-	private $variables;
+	private int $id;
+	private string $name;
+	#[EiPropEnum([self::TYPE_NQL => 'NQL', self::TYPE_SQL => 'SQL'])]
+	private string $type = self::TYPE_NQL;
+	private string $query;
+	#[EiPropOneToManyEmbedded(reduced: true)]
+	private \ArrayObject $variables;
 
 	public function __construct() {
 		$this->variables = new \ArrayObject();
@@ -29,7 +40,7 @@ class Report extends ObjectAdapter {
 	 * @return int
 	 */
 	public function getId() {
-		return $this->id;
+		return $this->id ?? null;
 	}
 
 	/**	
@@ -43,7 +54,7 @@ class Report extends ObjectAdapter {
 	 * @return string
 	 */
 	public function getName() {
-		return $this->name;
+		return $this->name ?? null;
 	}
 
 	/**
@@ -83,7 +94,7 @@ class Report extends ObjectAdapter {
 	}
 
 	public function getQuery() {
-		return $this->query;
+		return $this->query ?? null;
 	}
 
 	public function setQuery(string $query = null) {

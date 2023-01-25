@@ -10,7 +10,11 @@ use n2n\persistence\orm\InheritanceType;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
 use n2n\web\dispatch\mag\Mag;
+use rocket\attribute\EiType;
+use rocket\attribute\EiPreset;
 
+#[EiType(pluralLabel: 'Query Variablen')]
+#[EiPreset(editProps: ['label', 'name'])]
 abstract class QueryVariable extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->p('report', new AnnoManyToOne(Report::getClass(), CascadeType::MERGE));
@@ -24,11 +28,11 @@ abstract class QueryVariable extends ObjectAdapter {
 	/**
 	 * @var string $label
 	 */
-	private $label;
+	private string $label;
 	/**
 	 * @var string $name
 	 */
-	private $name;
+	private string $name;
 
 	/**
 	 * @var Report $report

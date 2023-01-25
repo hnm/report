@@ -7,7 +7,10 @@ use n2n\persistence\orm\annotation\AnnoOneToMany;
 use n2n\persistence\orm\CascadeType;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\web\dispatch\mag\Mag;
+use rocket\attribute\impl\EiPropOneToManyEmbedded;
+use rocket\attribute\EiType;
 
+#[EiType(label: 'Locale Variable', pluralLabel: 'Locale Variablen')]
 class EnumQueryVariable extends QueryVariable {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoDiscriminatorValue('enum'));
@@ -15,10 +18,13 @@ class EnumQueryVariable extends QueryVariable {
 					CascadeType::ALL, null, true));
 	}
 	
-	/**
-	 * @var \ArrayObject EnumValue
-	 */
-	private $enumValues;
+
+	#[EiPropOneToManyEmbedded]
+	private \ArrayObject $enumValues;
+
+	function __construct() {
+		$this->enumValues = new \ArrayObject();
+	}
 
 	/**
 	 * {@inheritDoc}
