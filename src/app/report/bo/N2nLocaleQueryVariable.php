@@ -6,7 +6,9 @@ use n2n\reflection\annotation\AnnoInit;
 use n2n\web\dispatch\mag\Mag;
 use n2n\util\type\ArgUtils;
 use n2n\impl\web\dispatch\mag\model\N2nLocaleMag;
+use rocket\attribute\EiType;
 
+#[EiType(label: 'Locale Variable', pluralLabel: 'Locale Variablen')]
 class N2nLocaleQueryVariable extends QueryVariable {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoDiscriminatorValue('n2n-locale'));

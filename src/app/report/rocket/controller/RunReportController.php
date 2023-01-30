@@ -1,5 +1,5 @@
 <?php
-namespace report\ei\controller;
+namespace report\rocket\controller;
 
 use n2n\impl\web\dispatch\mag\model\MagForm;
 use n2n\io\IoUtils;

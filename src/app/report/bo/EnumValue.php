@@ -6,7 +6,11 @@ use n2n\persistence\orm\annotation\AnnoTable;
 use n2n\persistence\orm\CascadeType;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
+use rocket\attribute\EiPreset;
+use rocket\attribute\EiType;
 
+#[EiType(label: 'Aufzählungswert', pluralLabel: 'Aufzählungswerte')]
+#[EiPreset(null, editProps: ['key', 'label'])]
 class EnumValue extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('report_enum_value'));
@@ -20,11 +24,11 @@ class EnumValue extends ObjectAdapter {
 	/**
 	 * @var string $key
 	 */
-	private $key;
+	private string $key;
 	/**
 	 * @var string $label
 	 */
-	private $label;
+	private string $label;
 	/**
 	 * @var EnumQueryVariable $enumQueryVariable
 	 */
@@ -42,7 +46,7 @@ class EnumValue extends ObjectAdapter {
 	 * @return string
 	 */
 	public function getKey() {
-		return $this->key;
+		return $this->key ?? null;
 	}
 	
 	/**
@@ -56,7 +60,7 @@ class EnumValue extends ObjectAdapter {
 	 * @return string $label
 	 */
 	public function getLabel() {
-		return $this->label;
+		return $this->label ?? null;
 	}
 	
 	/**

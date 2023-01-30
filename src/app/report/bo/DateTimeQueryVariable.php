@@ -5,7 +5,9 @@ use n2n\impl\web\dispatch\mag\model\DateTimeMag;
 use n2n\persistence\orm\annotation\AnnoDiscriminatorValue;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\web\dispatch\mag\Mag;
+use rocket\attribute\EiType;
 
+#[EiType(label: 'Datum/Zeit Variable', pluralLabel: 'Datum/Zeit Variablen')]
 class DateTimeQueryVariable extends QueryVariable {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoDiscriminatorValue('date-time'));
