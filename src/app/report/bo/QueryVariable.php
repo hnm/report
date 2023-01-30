@@ -43,7 +43,7 @@ abstract class QueryVariable extends ObjectAdapter {
 	 * @return string
 	 */
 	public function getLabel() {
-		return $this->label;
+		return $this->label ?? null;
 	}
 	/**
 	 * @param string $label
@@ -55,7 +55,7 @@ abstract class QueryVariable extends ObjectAdapter {
 	 * @return string
 	 */
 	public function getName() {
-		return $this->name;
+		return $this->name ?? null;
 	}
 	/**
 	 * @param string $name

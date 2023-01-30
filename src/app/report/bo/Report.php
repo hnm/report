@@ -11,10 +11,13 @@ use rocket\attribute\EiPreset;
 use rocket\spec\setup\EiPresetMode;
 use rocket\attribute\impl\EiPropOneToManyEmbedded;
 use rocket\attribute\impl\EiPropEnum;
+use rocket\attribute\impl\EiModCallback;
+use report\rocket\ReportEi;
 
 #[EiType(label: 'Report', pluralLabel: 'Reports')]
 #[MenuItem(groupName: 'Tools')]
 #[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
+#[EiModCallback(ReportEi::class)]
 class Report extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('report'));
