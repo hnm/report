@@ -13,6 +13,7 @@ use rocket\attribute\impl\EiPropOneToManyEmbedded;
 use rocket\attribute\impl\EiPropEnum;
 use rocket\attribute\impl\EiModCallback;
 use report\rocket\ReportEi;
+use rocket\attribute\impl\EiPropString;
 
 #[EiType(label: 'Report', pluralLabel: 'Reports')]
 #[MenuItem(groupName: 'Tools')]
@@ -31,6 +32,7 @@ class Report extends ObjectAdapter {
 	private string $name;
 	#[EiPropEnum([self::TYPE_NQL => 'NQL', self::TYPE_SQL => 'SQL'])]
 	private string $type = self::TYPE_NQL;
+	#[EiPropString(multiline: true)]
 	private string $query;
 	#[EiPropOneToManyEmbedded(reduced: true)]
 	private \ArrayObject $variables;
