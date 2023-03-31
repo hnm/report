@@ -14,11 +14,13 @@ use rocket\attribute\impl\EiPropEnum;
 use rocket\attribute\impl\EiModCallback;
 use report\rocket\ReportEi;
 use rocket\attribute\impl\EiPropString;
+use rocket\attribute\EiDisplayScheme;
 
 #[EiType(label: 'Report', pluralLabel: 'Reports')]
 #[MenuItem(groupName: 'Tools')]
 #[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
 #[EiModCallback(ReportEi::class)]
+#[EiDisplayScheme(['id', 'name', 'type'])]
 class Report extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('report'));
