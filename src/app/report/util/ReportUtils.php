@@ -16,10 +16,11 @@ class ReportUtils {
 	 * @return boolean
 	 */
 	public static function containsHtml($string) {
-		if($string != strip_tags($string)) {
-			return true;
+		if (empty($string)) {
+			return false;
 		}
-		return false;
+		
+		return $string != strip_tags($string);
 	}
 	
 	/**
