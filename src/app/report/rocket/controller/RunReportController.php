@@ -12,9 +12,8 @@ use n2n\web\http\Request;
 use report\bo\Report;
 use report\model\ReportDao;
 use report\util\ReportUtils;
-use rocket\core\model\Breadcrumb;
 use rocket\op\OpState;
-use rocket\op\ei\util\EiuCtrl;
+use rocket\op\util\OpuCtrl;
 use rocket\op\ei\util\Eiu;
 
 class RunReportController extends ControllerAdapter {
@@ -22,7 +21,7 @@ class RunReportController extends ControllerAdapter {
 	const COMMAND_REPORT = 'run';
 	const COMMAND_CSV = 'csv';
 	
-	private $eiuCtrl;
+	private $opuCtrl;
 	/**
 	 * @var Eiu $eiu
 	 */
@@ -42,19 +41,19 @@ class RunReportController extends ControllerAdapter {
 	 * @param Request $request
 	 */
 	public function prepare(Request $request) {
-		$this->eiuCtrl = EiuCtrl::from($this->cu());
-		$this->eiu = $this->eiuCtrl->eiu();
+		$this->opuCtrl = OpuCtrl::from($this->cu());
+		$this->eiu = $this->opuCtrl->eiu();
 		$this->dtc = $this->eiu->dtc('report');
 	}
 	
 	function index($reportId) {
-		$report = $this->eiuCtrl->lookupObject($reportId);
+		$report = $this->opuCtrl->lookupObject($reportId);
 		
-		$this->eiuCtrl->pushOverviewBreadcrumb()
+		$this->opuCtrl->pushOverviewBreadcrumb()
 				->pushDetailBreadcrumb($report)
 				->pushCurrentAsSirefBreadcrumb($this->dtc->t('script_cmd_run_report_breadcrumb'));
 		
-		$this->eiuCtrl->forwardUrlIframeZone($this->getUrlToController(['src', $reportId]));
+		$this->opuCtrl->forwardUrlIframeZone($this->getUrlToController(['src', $reportId]));
 	}
 	
 	/**
@@ -66,7 +65,7 @@ class RunReportController extends ControllerAdapter {
 		$reportResults = array();
 		$reportGenerated = false;
 		
-		$report = $this->eiuCtrl->lookupEntry($reportId)->getEntityObj();
+		$report = $this->opuCtrl->lookupEntry($reportId)->getEntityObj();
 		CastUtils::assertTrue($report instanceof Report);
 		
 		$hasQueryVariables = $report->hasQueryVariables();
