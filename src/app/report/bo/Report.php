@@ -6,7 +6,7 @@ use n2n\persistence\orm\annotation\AnnoTable;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
 use rocket\attribute\EiType;
-use rocket\attribute\MenuItem;
+use rocket\attribute\EiMenuItem;
 use rocket\attribute\EiPreset;
 use rocket\op\spec\setup\EiPresetMode;
 use rocket\attribute\impl\EiPropOneToManyEmbedded;
@@ -17,7 +17,7 @@ use rocket\attribute\impl\EiPropString;
 use rocket\attribute\EiDisplayScheme;
 
 #[EiType(label: 'Report', pluralLabel: 'Reports')]
-#[MenuItem(groupName: 'Tools')]
+#[EiMenuItem(groupName: 'Tools')]
 #[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
 #[EiModCallback(ReportEi::class)]
 #[EiDisplayScheme(['id', 'name', 'type'])]
