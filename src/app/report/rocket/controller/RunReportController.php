@@ -13,9 +13,9 @@ use report\bo\Report;
 use report\model\ReportDao;
 use report\util\ReportUtils;
 use rocket\core\model\Breadcrumb;
-use rocket\core\model\RocketState;
-use rocket\ei\util\EiuCtrl;
-use rocket\ei\util\Eiu;
+use rocket\op\OpState;
+use rocket\op\ei\util\EiuCtrl;
+use rocket\op\ei\util\Eiu;
 
 class RunReportController extends ControllerAdapter {
 	
@@ -28,7 +28,7 @@ class RunReportController extends ControllerAdapter {
 	 */
 	private $eiu;
 	/**
-	 * @var RocketState $rocketState
+	 * @var OpState $rocketState
 	 */
 	private $rocketState;
 	/**
@@ -38,7 +38,7 @@ class RunReportController extends ControllerAdapter {
 	
 	/**
 	 * @param Eiu $eiu
-	 * @param RocketState $rocketState
+	 * @param OpState $rocketState
 	 * @param Request $request
 	 */
 	public function prepare(Request $request) {

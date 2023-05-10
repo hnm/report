@@ -8,7 +8,7 @@ use n2n\reflection\ObjectAdapter;
 use rocket\attribute\EiType;
 use rocket\attribute\MenuItem;
 use rocket\attribute\EiPreset;
-use rocket\spec\setup\EiPresetMode;
+use rocket\op\spec\setup\EiPresetMode;
 use rocket\attribute\impl\EiPropOneToManyEmbedded;
 use rocket\attribute\impl\EiPropEnum;
 use rocket\attribute\impl\EiModCallback;

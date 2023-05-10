@@ -2,7 +2,7 @@
 //namespace report\ei\command;
 //
 //use rocket\impl\ei\component\command\adapter\IndependentEiCommandAdapter;
-//use rocket\ei\util\Eiu;
+//use rocket\op\ei\util\Eiu;
 //use rocket\si\control\SiButton;
 //use rocket\si\control\SiIconType;
 //use n2n\util\uri\Path;
@@ -34,7 +34,7 @@
 //
 //	/**
 //	 * {@inheritDoc}
-//	 * @see \rocket\ei\component\command\EiCommand::lookupController()
+//	 * @see \rocket\op\ei\component\command\EiCommand::lookupController()
 //	 */
 //	public function lookupController(Eiu $eiu): Controller {
 //		return $eiu->lookup(RunReportController::class);
