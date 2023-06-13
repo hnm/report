@@ -17,7 +17,7 @@ use rocket\attribute\impl\EiPropString;
 use rocket\attribute\EiDisplayScheme;
 
 #[EiType(label: 'Report', pluralLabel: 'Reports')]
-#[EiMenuItem(groupName: 'Tools')]
+#[EiMenuItem(groupName: 'Tools', groupOrderIndex: 999)]
 #[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
 #[EiModCallback(ReportEi::class)]
 #[EiDisplayScheme(['name', 'type'])]
