@@ -12,6 +12,7 @@ use n2n\reflection\ObjectAdapter;
 use n2n\web\dispatch\mag\Mag;
 use rocket\attribute\EiType;
 use rocket\attribute\EiPreset;
+use n2n\persistence\orm\attribute\Table;
 
 #[EiType(pluralLabel: 'Query Variablen')]
 #[EiPreset(editProps: ['label', 'name'])]

@@ -20,7 +20,7 @@ use rocket\attribute\EiDisplayScheme;
 #[EiMenuItem(groupName: 'Tools')]
 #[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
 #[EiModCallback(ReportEi::class)]
-#[EiDisplayScheme(['id', 'name', 'type'])]
+#[EiDisplayScheme(['name', 'type'])]
 class Report extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('report'));
@@ -71,24 +71,15 @@ class Report extends ObjectAdapter {
 		$this->name = $name;
 	}
 
-	/**
-	 * @return QueryVariable[]
-	 */
-	public function getVariables() {
+	public function getVariables(): \ArrayObject {
 		return $this->variables;
 	}
 
-	/**
-	 * @param \ArrayObject $variables
-	 */
-	public function setVariables($variables) {
+	public function setVariables(\ArrayObject $variables) {
 		$this->variables = $variables;
 	}
 
-	/**
-	 * @return boolean
-	 */
-	public function hasQueryVariables() {
+	public function hasQueryVariables(): bool {
 		return count($this->variables) > 0 ? true : false;
 	}
 

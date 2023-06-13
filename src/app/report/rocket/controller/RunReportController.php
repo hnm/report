@@ -2,7 +2,6 @@
 namespace report\rocket\controller;
 
 use n2n\impl\web\dispatch\mag\model\MagForm;
-use n2n\io\IoUtils;
 use n2n\l10n\DynamicTextCollection;
 use n2n\util\type\CastUtils;
 use n2n\web\dispatch\mag\MagCollection;
@@ -15,6 +14,7 @@ use report\util\ReportUtils;
 use rocket\op\OpState;
 use rocket\op\util\OpuCtrl;
 use rocket\op\ei\util\Eiu;
+use n2n\util\io\IoUtils;
 
 class RunReportController extends ControllerAdapter {
 	
@@ -101,12 +101,8 @@ class RunReportController extends ControllerAdapter {
 					array('magForm' => $magForm, 'report' => $report, 'reportGenerated' => $reportGenerated,
 							'reportResults' => $reportResults));
 	}
-	
-	/**
-	 * @param \ArrayObject $reportResults
-	 * @return array
-	 */
-	private function prepareReportResults($reportResults) {
+
+	private function prepareReportResults(\ArrayObject|array $reportResults): array {
 		$counter = 0;
 		$preparedReportResults = array();
 		
