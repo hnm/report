@@ -7,7 +7,7 @@ use n2n\context\RequestScoped;
 use n2n\web\dispatch\mag\MagCollection;
 use n2n\l10n\MessageContainer;
 use n2n\persistence\orm\query\QueryConflictException;
-use rocket\ei\util\Eiu;
+use rocket\op\ei\util\Eiu;
 use n2n\persistence\Pdo;
 
 class ReportDao implements RequestScoped {

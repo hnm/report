@@ -9,12 +9,13 @@ use n2n\reflection\annotation\AnnoInit;
 use n2n\web\dispatch\mag\Mag;
 use rocket\attribute\impl\EiPropOneToManyEmbedded;
 use rocket\attribute\EiType;
+use n2n\persistence\orm\attribute\DiscriminatorValue;
 
 #[EiType(label: 'Locale Variable', pluralLabel: 'Locale Variablen')]
+#[DiscriminatorValue('enum')]
 class EnumQueryVariable extends QueryVariable {
 	private static function _annos(AnnoInit $ai) {
-		$ai->c(new AnnoDiscriminatorValue('enum'));
-		$ai->p('enumValues', new AnnoOneToMany(EnumValue::getClass(), 'enumQueryVariable', 
+		$ai->p('enumValues', new AnnoOneToMany(EnumValue::getClass(), 'enumQueryVariable',
 					CascadeType::ALL, null, true));
 	}
 	
@@ -49,7 +50,7 @@ class EnumQueryVariable extends QueryVariable {
 	/**
 	 * @return EnumValue []
 	 */
-	public function getEnumValues() {
+	public function getEnumValues(): \ArrayObject {
 		return $this->enumValues;
 	}
 	

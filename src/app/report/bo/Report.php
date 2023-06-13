@@ -6,9 +6,9 @@ use n2n\persistence\orm\annotation\AnnoTable;
 use n2n\reflection\annotation\AnnoInit;
 use n2n\reflection\ObjectAdapter;
 use rocket\attribute\EiType;
-use rocket\attribute\MenuItem;
+use rocket\attribute\EiMenuItem;
 use rocket\attribute\EiPreset;
-use rocket\spec\setup\EiPresetMode;
+use rocket\op\spec\setup\EiPresetMode;
 use rocket\attribute\impl\EiPropOneToManyEmbedded;
 use rocket\attribute\impl\EiPropEnum;
 use rocket\attribute\impl\EiModCallback;
@@ -17,10 +17,10 @@ use rocket\attribute\impl\EiPropString;
 use rocket\attribute\EiDisplayScheme;
 
 #[EiType(label: 'Report', pluralLabel: 'Reports')]
-#[MenuItem(groupName: 'Tools')]
+#[EiMenuItem(groupName: 'Tools')]
 #[EiPreset(EiPresetMode::EDIT, readProps: ['id'])]
 #[EiModCallback(ReportEi::class)]
-#[EiDisplayScheme(['id', 'name', 'type'])]
+#[EiDisplayScheme(['name', 'type'])]
 class Report extends ObjectAdapter {
 	private static function _annos(AnnoInit $ai) {
 		$ai->c(new AnnoTable('report'));
@@ -71,24 +71,15 @@ class Report extends ObjectAdapter {
 		$this->name = $name;
 	}
 
-	/**
-	 * @return QueryVariable[]
-	 */
-	public function getVariables() {
+	public function getVariables(): \ArrayObject {
 		return $this->variables;
 	}
 
-	/**
-	 * @param \ArrayObject $variables
-	 */
-	public function setVariables($variables) {
+	public function setVariables(\ArrayObject $variables) {
 		$this->variables = $variables;
 	}
 
-	/**
-	 * @return boolean
-	 */
-	public function hasQueryVariables() {
+	public function hasQueryVariables(): bool {
 		return count($this->variables) > 0 ? true : false;
 	}
 

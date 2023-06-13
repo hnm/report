@@ -2,7 +2,6 @@
 namespace report\rocket\controller;
 
 use n2n\impl\web\dispatch\mag\model\MagForm;
-use n2n\io\IoUtils;
 use n2n\l10n\DynamicTextCollection;
 use n2n\util\type\CastUtils;
 use n2n\web\dispatch\mag\MagCollection;
@@ -12,23 +11,23 @@ use n2n\web\http\Request;
 use report\bo\Report;
 use report\model\ReportDao;
 use report\util\ReportUtils;
-use rocket\core\model\Breadcrumb;
-use rocket\core\model\RocketState;
-use rocket\ei\util\EiuCtrl;
-use rocket\ei\util\Eiu;
+use rocket\op\OpState;
+use rocket\op\util\OpuCtrl;
+use rocket\op\ei\util\Eiu;
+use n2n\util\io\IoUtils;
 
 class RunReportController extends ControllerAdapter {
 	
 	const COMMAND_REPORT = 'run';
 	const COMMAND_CSV = 'csv';
 	
-	private $eiuCtrl;
+	private $opuCtrl;
 	/**
 	 * @var Eiu $eiu
 	 */
 	private $eiu;
 	/**
-	 * @var RocketState $rocketState
+	 * @var OpState $rocketState
 	 */
 	private $rocketState;
 	/**
@@ -38,23 +37,23 @@ class RunReportController extends ControllerAdapter {
 	
 	/**
 	 * @param Eiu $eiu
-	 * @param RocketState $rocketState
+	 * @param OpState $rocketState
 	 * @param Request $request
 	 */
 	public function prepare(Request $request) {
-		$this->eiuCtrl = EiuCtrl::from($this->cu());
-		$this->eiu = $this->eiuCtrl->eiu();
+		$this->opuCtrl = OpuCtrl::from($this->cu());
+		$this->eiu = $this->opuCtrl->eiu();
 		$this->dtc = $this->eiu->dtc('report');
 	}
 	
 	function index($reportId) {
-		$report = $this->eiuCtrl->lookupObject($reportId);
+		$report = $this->opuCtrl->lookupObject($reportId);
 		
-		$this->eiuCtrl->pushOverviewBreadcrumb()
+		$this->opuCtrl->pushOverviewBreadcrumb()
 				->pushDetailBreadcrumb($report)
 				->pushCurrentAsSirefBreadcrumb($this->dtc->t('script_cmd_run_report_breadcrumb'));
 		
-		$this->eiuCtrl->forwardUrlIframeZone($this->getUrlToController(['src', $reportId]));
+		$this->opuCtrl->forwardUrlIframeZone($this->getUrlToController(['src', $reportId]));
 	}
 	
 	/**
@@ -66,7 +65,7 @@ class RunReportController extends ControllerAdapter {
 		$reportResults = array();
 		$reportGenerated = false;
 		
-		$report = $this->eiuCtrl->lookupEntry($reportId)->getEntityObj();
+		$report = $this->opuCtrl->lookupEntry($reportId)->getEntityObj();
 		CastUtils::assertTrue($report instanceof Report);
 		
 		$hasQueryVariables = $report->hasQueryVariables();
@@ -102,12 +101,8 @@ class RunReportController extends ControllerAdapter {
 					array('magForm' => $magForm, 'report' => $report, 'reportGenerated' => $reportGenerated,
 							'reportResults' => $reportResults));
 	}
-	
-	/**
-	 * @param \ArrayObject $reportResults
-	 * @return array
-	 */
-	private function prepareReportResults($reportResults) {
+
+	private function prepareReportResults(\ArrayObject|array $reportResults): array {
 		$counter = 0;
 		$preparedReportResults = array();
 		
