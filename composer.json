@@ -20,5 +20,10 @@
         "psr-4": {
             "report\\": "src/app/report"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "n2n/n2n-composer-module-installer": true
+        }
     }
 }

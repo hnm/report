@@ -10,38 +10,30 @@ use n2n\persistence\orm\OrmConfigurationException;
 use rocket\ei\util\Eiu;
 
 class ReportUtils {
-	
-	/**
-	 * @param string $string
-	 * @return boolean
-	 */
-	public static function containsHtml($string) {
-		if($string != strip_tags($string)) {
+
+	public static function containsHtml(?string $string): bool {
+		if ($string == null) return false;
+		if ($string != strip_tags($string)) {
 			return true;
 		}
 		return false;
 	}
-	
-	/**
-	 * @param mixed $value
-	 * @param Eiu $eiu
-	 * @return mixed|null
-	 */
-	public static function determineValueByType($value, Eiu $eiu) {
+
+	public static function determineValueByType(mixed $value, Eiu $eiu): mixed {
 		$locale = $eiu->frame()->getN2nLocale();
-		
+
 		if (is_scalar($value)) {
 			return $value;
 		}
-		
+
 		if ($value instanceof \DateTime) {
 			return L10nUtils::formatDateTime($value, $locale);
 		}
-		
+
 		if ($value instanceof N2nLocale) {
 			return $value->getName();
 		}
-		
+
 		if (is_object($value)) {
 			$entityModel = null;
 			try {
@@ -53,19 +45,19 @@ class ReportUtils {
 					return '[obj]';
 				}
 			}
-				
+
 			$rocket = $eiu->frame()->getN2nContext()->lookup(Rocket::class);
 			CastUtils::assertTrue($rocket instanceof Rocket);
-				
+
 			if (!$rocket->getSpec()->containsEiTypeClass($entityModel->getClass())) {
 				return '[obj]';
 			}
-				
+
 			$eiSpec = $rocket->getSpec()->getEiTypeByClass($entityModel->getClass());
 			$valueEiu = new Eiu($eiSpec, $eiu->getN2nContext(), $value);
 			return $valueEiu->mask()->engine()->createIdentityString($value, $locale);
 		}
-		
+
 		return null;
 	}
 }
