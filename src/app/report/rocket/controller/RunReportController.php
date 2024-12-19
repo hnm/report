@@ -61,7 +61,7 @@ class RunReportController extends ControllerAdapter {
 	 * @param ReportDao $reportDao
 	 * @param string $reportId
 	 */
-	public function doSrc(ReportDao $reportDao, $reportId, ParamPost $command = null) {
+	public function doSrc(ReportDao $reportDao, $reportId, ?ParamPost $command = null) {
 		$reportResults = array();
 		$reportGenerated = false;
 		
