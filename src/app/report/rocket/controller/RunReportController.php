@@ -15,13 +15,16 @@ use rocket\op\OpState;
 use rocket\op\util\OpuCtrl;
 use rocket\op\ei\util\Eiu;
 use n2n\util\io\IoUtils;
+use rocket\ui\si\err\CorruptedSiDataException;
+use n2n\web\http\PageNotFoundException;
+use n2n\web\http\ForbiddenException;
 
 class RunReportController extends ControllerAdapter {
 	
 	const COMMAND_REPORT = 'run';
 	const COMMAND_CSV = 'csv';
 	
-	private $opuCtrl;
+	private OpuCtrl $opuCtrl;
 	/**
 	 * @var Eiu $eiu
 	 */
@@ -40,12 +43,17 @@ class RunReportController extends ControllerAdapter {
 	 * @param OpState $rocketState
 	 * @param Request $request
 	 */
-	public function prepare(Request $request) {
+	public function prepare(Request $request): void {
 		$this->opuCtrl = OpuCtrl::from($this->cu());
 		$this->eiu = $this->opuCtrl->eiu();
 		$this->dtc = $this->eiu->dtc('report');
 	}
-	
+
+	/**
+	 * @throws CorruptedSiDataException
+	 * @throws PageNotFoundException
+	 * @throws ForbiddenException
+	 */
 	function index($reportId) {
 		$report = $this->opuCtrl->lookupObject($reportId);
 		
