@@ -18,7 +18,7 @@ class ReportEi {
 	function eiSetup(Eiu $eiu): void {
 		$eiu->mask()->addCmd(EiCmdNatures::callback()
 				->setController(fn (Eiu $eiu) => $eiu->lookup(RunReportController::class))
-				->addEntryGuiControl(function (Eiu $eiu) {
+				->putEntryGuiControl('report', function (Eiu $eiu) {
 					if ($eiu->entry()->isNew()) {
 						return null;
 					}
