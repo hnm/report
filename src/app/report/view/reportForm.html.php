@@ -3,7 +3,7 @@
 	use n2n\impl\web\ui\view\html\HtmlView;
 	use report\bo\Report;
 	use report\util\ReportUtils;
-	use rocket\si\control\SiIconType;
+	use rocket\ui\si\control\SiIconType;
 	
 	/**
 	 * @var \n2n\web\ui\view\View $view
