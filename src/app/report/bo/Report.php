@@ -34,7 +34,7 @@ class Report extends ObjectAdapter {
 	private string $name;
 	#[EiPropEnum([self::TYPE_NQL => 'NQL', self::TYPE_SQL => 'SQL'])]
 	private string $type = self::TYPE_NQL;
-	#[EiPropString(multiline: true)]
+	#[EiPropString(multiline: true, maxlength: 4000)]
 	private string $query;
 	#[EiPropOneToManyEmbedded(reduced: true)]
 	private \ArrayObject $variables;
