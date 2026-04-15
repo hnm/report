@@ -67,7 +67,7 @@ class Report extends ObjectAdapter {
 	/**
 	 * @param string $name
 	 */
-	public function setName(?string $name = null) {
+	public function setName(string $name) {
 		$this->name = $name;
 	}
 
