@@ -32,10 +32,7 @@ class Report extends ObjectAdapter {
 		return $this->id;
 	}
 
-	/**	
-	 * @param int $id
-	 */
-	public function setId(int $id = null) {
+	public function setId(?int $id = null) {
 		$this->id = $id;
 	}
 
@@ -49,7 +46,7 @@ class Report extends ObjectAdapter {
 	/**
 	 * @param string $name
 	 */
-	public function setName(string $name = null) {
+	public function setName(?string $name = null) {
 		$this->name = $name;
 	}
 
@@ -86,7 +83,7 @@ class Report extends ObjectAdapter {
 		return $this->query;
 	}
 
-	public function setQuery(string $query = null) {
+	public function setQuery(?string $query = null) {
 		$this->query = $query;
 	}
 }
